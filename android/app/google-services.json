@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "878288456528",
+    "firebase_url": "https://learning-firebase-afloate-default-rtdb.firebaseio.com",
+    "project_id": "learning-firebase-afloate",
+    "storage_bucket": "learning-firebase-afloate.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:878288456528:android:8a991200e85aec3e727a55",
+        "android_client_info": {
+          "package_name": "com.example.cookies"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "878288456528-njflg355miho89uolodv01b42975c6bf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_5-UtdAQsO_I3RisuO4GefWm7JWqAEjw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "878288456528-njflg355miho89uolodv01b42975c6bf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "878288456528-8cvv111033anv1rm0ac61oguelvau0se.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cookies"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
