@@ -1,4 +1,5 @@
 // ignore_for_file: file_names
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
@@ -95,9 +96,14 @@ class _CookiePageState extends State<CookiePage>
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
+            AutoSizeText(
               '${_counter * -1}',
-              style: Theme.of(context).textTheme.headlineMedium,
+              style: const TextStyle(
+                    color: Color.fromARGB(255, 112, 63, 63),
+                    fontSize: 45,
+                    fontWeight: FontWeight.w500,
+                  ),
+              //style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(
               height: 50,
@@ -134,3 +140,4 @@ class _CookiePageState extends State<CookiePage>
 }
 
 //https://console.firebase.google.com/u/2/project/learning-firebase-afloate/database/learning-firebase-afloate-default-rtdb/data
+//the hamburger menu in the top left can contain statistics (EX. num clicks, num golden cookies clicked) cookie accessories, achievements

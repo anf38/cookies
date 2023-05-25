@@ -24,8 +24,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
       .child('users/${FirebaseAuth.instance.currentUser!.uid}')
       .set({
         'userName': _userNameTextController.text,
-        'email': _emailTextController.text,
-        'password': _passwordTextController.text,
+        //'email': _emailTextController.text,
+        //'password': _passwordTextController.text,
         'clickPower': 1,
       });
 }

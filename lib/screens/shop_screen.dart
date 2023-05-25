@@ -465,3 +465,6 @@ class _ShopPageState extends State<ShopPage> {
 //more gambling
 //gingerbread housing market
 //cinnamon = illicit drug substance
+
+//occasionally a golded cookie will show up. click it in time to earn a lot of cookies
+//occasionally, Clookie will show up. click him to kick him away (Achievement name: Clookie kicker)
