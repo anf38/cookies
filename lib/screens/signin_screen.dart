@@ -95,7 +95,7 @@ class _SignInScreenState extends State<SignInScreen>
                 const SizedBox(
                   height: 20,
                 ),
-                signInSignUpButton(context, true, () {
+                signInSignUpButton('LOG IN', context, () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
                           email: _emailTextController.text,
@@ -140,3 +140,5 @@ class _SignInScreenState extends State<SignInScreen>
     );
   }
 }
+//https://www.geeksforgeeks.org/how-to-change-password-of-user-in-android-using-firebase/#
+//for when people forget their password and need to reset it

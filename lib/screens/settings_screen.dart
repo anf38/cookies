@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cookies/screens/settings/changePassword.dart';
 import 'package:flutter/material.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -98,7 +99,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 size: 25,
               ),
               onTap: () {
-                setState(() {});
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const changePassword()),
+                );
               },
             ),
           ),
@@ -278,25 +282,6 @@ class _SettingsPageState extends State<SettingsPage> {
                     fontSize: 25,
                   ),
                 ),
-              ),
-            ),
-          ),
-
-const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: ListTile(
-              leading: Icon(Icons.question_mark_rounded),
-              title: Text(
-                "Log Out",
-                style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
-                  fontSize: 30,
-                ),
-              ),
-              trailing: Icon(
-                Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
-                size: 25,
               ),
             ),
           ),

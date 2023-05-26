@@ -84,7 +84,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 const SizedBox(
                   height: 20,
                 ),
-                signInSignUpButton(context, false, () {
+                signInSignUpButton('SIGN UP', context, () {
                   FirebaseAuth.instance
                       .createUserWithEmailAndPassword(
                           email: _emailTextController.text,
