@@ -1,5 +1,3 @@
-import 'package:cookies/screens/CookiePage.dart';
-import 'package:cookies/screens/signin_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,25 +17,31 @@ class _changePasswordState extends State<changePassword> {
   TextEditingController newPassword = TextEditingController();
   TextEditingController confirmPassword = TextEditingController();
 
-  void _changePassword(String currentPassword, String newPassword) async {
-    final user = FirebaseAuth.instance.currentUser;
-    final cred = EmailAuthProvider.credential(
-      email: user?.email ??
-          '', // Use null-aware operator and provide a default value for email
-      password: currentPassword,
+  alertBox(String titleTxt, String contentTxt) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoAlertDialog(
+          title: Text(titleTxt),
+          content: Text(contentTxt),
+          actions: [
+            CupertinoDialogAction(
+              child: const Text("OK"),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        );
+      },
     );
+  }
 
-    try {
-      await user?.reauthenticateWithCredential(
-          cred); // Use await to wait for the reauthentication
-      await user?.updatePassword(
-          newPassword); // Use await to wait for the password update
-
-      // Password changed successfully
-      // You can perform additional actions or show a success message here
-    } catch (error) {
-      print('Error changing password: $error');
-    }
+  bool _obscureText = true;
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
   }
 
   @override
@@ -67,52 +71,55 @@ class _changePasswordState extends State<changePassword> {
             padding: const EdgeInsets.fromLTRB(20, 120, 20, 0),
             child: Column(
               children: <Widget>[
-                const SizedBox(
-                  height: 30,
+                const SizedBox(height: 30),
+                reusableTextField("Enter Old Password", Icons.lock_outline, _obscureText, oldPassword),
+                const SizedBox(height: 20),
+                reusableTextField("Enter New Password", Icons.lock_outline, _obscureText, newPassword),
+                const SizedBox(height: 20),
+                reusableTextField("Confirm New Password", Icons.lock_outline, _obscureText, confirmPassword),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Spacer(),
+                    TextButton(
+                      onPressed: _toggle,
+                      child: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
-                reusableTextField("Enter Old Password", Icons.lock_outline,
-                    true, oldPassword),
-                const SizedBox(
-                  height: 20,
-                ),
-                reusableTextField("Enter New Password", Icons.lock_outline,
-                    true, newPassword),
-                const SizedBox(
-                  height: 20,
-                ),
-                reusableTextField("Confirm New Password", Icons.lock_outline,
-                    true, confirmPassword),
-                const SizedBox(
-                  height: 20,
-                ),
-                signInSignUpButton("Change Password", context, () {  
-                  if (newPassword.text == confirmPassword.text) {
-                    _changePassword(oldPassword.text, newPassword.text);
 
-                    Navigator.push(
+
+
+
+                
+                signInSignUpButton("Change Password", context, () async {
+                  if (newPassword.text == confirmPassword.text) {
+
+                    final user = FirebaseAuth.instance.currentUser;
+                    final cred = EmailAuthProvider.credential(
+                      email: user?.email ?? '',
+                      password: oldPassword.text,
+                    );
+
+                    try {
+                      await user?.reauthenticateWithCredential(cred); //reauthentication
+                      await user?.updatePassword(newPassword.text); //password update
+
+                      // Password changed successfully
+                      // ignore: use_build_context_synchronously
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
-                              builder: (context) => const AppBarPage()));
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return CupertinoAlertDialog(
-                          title: const Text("Success!"),
-                          content: const Text("Password was changed"),
-                          actions: [
-                            CupertinoDialogAction(
-                              child: const Text("OK"),
-                              onPressed: () {
-                                Navigator.pop(context); // Close the dialog
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
+                          builder: (context) => const AppBarPage()));
+                      alertBox("Success!", "Password was changed");
+                    } catch (e) {
+                      alertBox("Error!", "Old password is incorrect");
+                    }
                   } else {
-                    // Message pops up saying passwords need to match
-                    print("Passwords don't match");
+                    alertBox("Error!", "New passwords dont match");
                   }
                 })
               ],

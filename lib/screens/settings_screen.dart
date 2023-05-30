@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cookies/screens/settings/changeEmail.dart';
 import 'package:cookies/screens/settings/changePassword.dart';
 import 'package:flutter/material.dart';
 
@@ -78,7 +79,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 size: 25,
               ),
               onTap: () {
-                setState(() {});
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const changeEmail()),
+                );
               },
             ),
           ),
