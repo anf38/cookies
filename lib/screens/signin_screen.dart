@@ -42,6 +42,13 @@ class _SignInScreenState extends State<SignInScreen>
     super.dispose();
   }
 
+  bool _obscureText = true;
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -90,11 +97,23 @@ class _SignInScreenState extends State<SignInScreen>
                 const SizedBox(
                   height: 20,
                 ),
-                reusableTextField("Enter Password", Icons.lock_outline, true,
+                reusableTextField("Enter Password", Icons.lock_outline, _obscureText,
                     _passwordTextController),
-                const SizedBox(
-                  height: 20,
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Spacer(),
+                    TextButton(
+                      onPressed: _toggle,
+                      child: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
+
                 signInSignUpButton('LOG IN', context, () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(

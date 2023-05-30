@@ -11,6 +11,7 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
+  bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,11 +184,18 @@ class _SettingsPageState extends State<SettingsPage> {
                   fontSize: 30,
                 ),
               ),
-              trailing: const Icon(
-                Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
-                size: 25,
-              ),
+              trailing: Switch(
+      value: isSwitched,
+      onChanged: (value) {
+        setState(() {
+          isSwitched = value;
+          if (isSwitched) {
+            print("Hello World");
+          }
+        });
+      },
+      activeColor: const Color.fromARGB(255, 112, 63, 63),
+    ),
               onTap: () {
                 setState(() {});
               },

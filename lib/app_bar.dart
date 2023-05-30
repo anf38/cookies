@@ -7,6 +7,8 @@ import 'package:cookies/utils/color_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+ThemeManager _themeManager = ThemeManager();
+
 class AppBarPage extends StatefulWidget {
   const AppBarPage({super.key});
 
@@ -20,7 +22,8 @@ class _AppBarPageState extends State<AppBarPage> {
         length: 4,
         child: Scaffold(
             appBar: AppBar(
-                title: const Text("Cookie Clicker"),//maybe say "Username's Bakery"
+                title: const Text(
+                    "Cookie Clicker"), //maybe say "Username's Bakery"
                 centerTitle: true,
                 leading: IconButton(
                   icon: const Icon(Icons.menu),
@@ -63,12 +66,11 @@ class _AppBarPageState extends State<AppBarPage> {
                     Tab(icon: Icon(Icons.settings), text: 'Settings'),
                   ],
                 )),
-           
             body: const TabBarView(children: [
               CookiePage(),
               ShopPage(),
               LeaderboardPage(),
               SettingsPage(),
             ])),
-  );
+      );
 }

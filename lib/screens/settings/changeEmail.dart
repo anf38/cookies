@@ -36,6 +36,13 @@ class _changeEmailState extends State<changeEmail> {
     );
   }
 
+  bool _obscureText = true;
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,12 +71,23 @@ class _changeEmailState extends State<changeEmail> {
             child: Column(
               children: <Widget>[
                 const SizedBox(height: 30),
-                reusableTextField(
-                    "Enter New Email", Icons.lock_outline, false, newEmail),
+                reusableTextField("Enter New Email", Icons.lock_outline, _obscureText, newEmail),
                 const SizedBox(height: 20),
-                reusableTextField("Confirm Password", Icons.lock_outline, true,
-                    confirmPassword),
-                const SizedBox(height: 20),
+                reusableTextField("Confirm Password", Icons.lock_outline, _obscureText, confirmPassword),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    const Spacer(),
+                    TextButton(
+                      onPressed: _toggle,
+                      child: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
+
                 signInSignUpButton("Change Email", context, () async {
                   final user = FirebaseAuth.instance.currentUser;
                   final cred = EmailAuthProvider.credential(
