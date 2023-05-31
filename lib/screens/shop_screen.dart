@@ -105,7 +105,6 @@ class _ShopPageState extends State<ShopPage> {
               style: TextStyle(
                 fontSize: 35,
                 fontWeight: FontWeight.w700,
-                color: Color.fromARGB(255, 112, 63, 63),
               ),
             ),
             const SizedBox(
@@ -176,18 +175,22 @@ class _ShopPageState extends State<ShopPage> {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ListTile(
                 leading: const Icon(Icons.cookie),
-                title: const Text(
+                title: Text(
                   "Another Cookie",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: yourScore + anotherCookieCost < 1
+                    ?  Colors.white
+                    :  const Color.fromARGB(150, 255, 255, 255),
                     fontSize: 30,
                   ),
                 ),
                 subtitle: AutoSizeText(
                   "Increase cookies per click by 1\nCurrent: $_tapCount",
                   maxLines: 2,
-                  style: const TextStyle(
-                    color: Color.fromARGB(225, 255, 255, 255),
+                  style: TextStyle(
+                    color: yourScore + anotherCookieCost < 1
+                    ?  Colors.white
+                    :  const Color.fromARGB(150, 255, 255, 255),
                     fontSize: 20,
                   ),
                 ),
@@ -201,19 +204,15 @@ class _ShopPageState extends State<ShopPage> {
                 ),
                 onTap: () {
                   setState(() {
-                    if ((yourScore * -1) >= anotherCookieCost) {
-                      //if you can afford
+                    if ((yourScore * -1) >= anotherCookieCost) {//if you can afford
                       _tapCount++;
                       anotherCookieCost = _payment(anotherCookieCost);
-                    } else {
-                      tileColor = const Color.fromARGB(
-                          150, 189, 118, 118); // Change tileColor to invalid
                     }
                   });
                 },
                 tileColor: yourScore + anotherCookieCost < 1
                     ? const Color.fromARGB(255, 189, 118, 118)
-                    : const Color.fromARGB(200, 189, 118, 118),
+                    : const Color.fromARGB(255, 197, 144, 144),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),

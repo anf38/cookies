@@ -99,7 +99,6 @@ class _CookiePageState extends State<CookiePage>
             AutoSizeText(
               '${_counter * -1}',
               style: const TextStyle(
-                    color: Color.fromARGB(255, 112, 63, 63),
                     fontSize: 45,
                     fontWeight: FontWeight.w500,
                   ),
@@ -138,6 +137,8 @@ class _CookiePageState extends State<CookiePage>
     );
   }
 }
+
+//make it so taps are 
 
 //https://console.firebase.google.com/u/2/project/learning-firebase-afloate/database/learning-firebase-afloate-default-rtdb/data
 //the hamburger menu in the top left can contain statistics (EX. num clicks, num golden cookies clicked) cookie accessories, achievements

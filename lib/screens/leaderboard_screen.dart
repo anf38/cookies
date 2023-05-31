@@ -63,7 +63,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                 style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.w700,
-                    color: Color.fromARGB(255, 112, 63, 63))),
+                )),
             const SizedBox(
               height: 10,
             ),
@@ -122,7 +122,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                 style: TextStyle(
                     fontSize: 35,
                     fontWeight: FontWeight.w700,
-                    color: Color.fromARGB(255, 112, 63, 63))),
+                )),
             const SizedBox(
               height: 10,
             ),
@@ -133,7 +133,9 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
                 height: 575.0,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10.0),
-                  color: const Color.fromARGB(255, 184, 132, 132),
+                   border: Border.all(
+                    width: 3.0,
+                  ),
                 ),
                 child: GridView.count(
                   crossAxisCount: 1,
@@ -170,7 +172,7 @@ class _LeaderboardPageState extends State<LeaderboardPage> {
           padding: const EdgeInsets.only(
               left: 20.0, right: 20.0, bottom: 5.0, top: 10.0),
           decoration: BoxDecoration(
-            color: isCurrentUser ? const Color.fromARGB(255, 189, 118, 118) : const Color.fromARGB(50, 255, 255, 255),
+            color: isCurrentUser ? const Color.fromARGB(255, 189, 118, 118) : const Color.fromARGB(255, 197, 144, 144),
             borderRadius: BorderRadius.circular(15.0),
           ),
           child: Row(

@@ -49,7 +49,6 @@ class _SettingsPageState extends State<SettingsPage> {
               title: const Text(
                 "Change Username",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
@@ -70,7 +69,6 @@ class _SettingsPageState extends State<SettingsPage> {
               title: const Text(
                 "Change Email",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
@@ -94,7 +92,6 @@ class _SettingsPageState extends State<SettingsPage> {
               title: const Text(
                 "Change Password",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
@@ -139,7 +136,6 @@ class _SettingsPageState extends State<SettingsPage> {
               title: const Text(
                 "Notifications",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
@@ -180,7 +176,7 @@ class _SettingsPageState extends State<SettingsPage> {
               title: const Text(
                 "Dark Mode",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
+                  //color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
@@ -229,7 +225,6 @@ class _SettingsPageState extends State<SettingsPage> {
               title: Text(
                 "Privacy and Security",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
@@ -267,7 +262,6 @@ class _SettingsPageState extends State<SettingsPage> {
               title: Text(
                 "Report a Bug",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
@@ -305,7 +299,6 @@ class _SettingsPageState extends State<SettingsPage> {
               title: Text(
                 "Delete Account",
                 style: TextStyle(
-                  color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
