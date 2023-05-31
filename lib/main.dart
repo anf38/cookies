@@ -18,8 +18,17 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Cookie Clicker',
       theme: ThemeData(
-        primarySwatch: Colors.brown,
+        brightness: Brightness.light,
+        textTheme: Theme.of(context).textTheme.apply(
+          bodyColor: const Color.fromARGB(255, 112, 63, 63),
+        ),
       ),
+      darkTheme: ThemeData(brightness:Brightness.dark,
+        textTheme: Theme.of(context).textTheme.apply(
+          bodyColor: const Color.fromARGB(255, 189, 118, 118),
+        ),
+      ),
+      themeMode: ThemeMode.light,
       home: const SignInScreen(),
     );
   }
