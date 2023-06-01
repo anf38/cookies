@@ -310,6 +310,5 @@ class _SettingsPageState extends State<SettingsPage> {
   }
 }
 
-//dark mode
 //change email/username/password
 //reset/delete account

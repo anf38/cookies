@@ -6,6 +6,7 @@ import 'package:cookies/screens/signin_screen.dart';
 import 'package:cookies/utils/color_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'main.dart';
 
 class AppBarPage extends StatefulWidget {
   const AppBarPage({super.key});
@@ -47,11 +48,22 @@ class _AppBarPageState extends State<AppBarPage> {
                 ],
                 flexibleSpace: Container(
                   decoration: BoxDecoration(
-                      gradient: LinearGradient(colors: [
-                    hexStringToColor("ffdead"),
-                    hexStringToColor("eea9b8"),
-                    hexStringToColor("cb6d51"),
-                  ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+                    gradient: LinearGradient(
+                      colors: isDarkModeEnabled.value
+                          ? [
+                              hexStringToColor("cb6d51"),
+                              hexStringToColor("7b1e17"),
+                              hexStringToColor("4c1d1d"),
+                            ]
+                          : [
+                              hexStringToColor("ffdead"),
+                              hexStringToColor("eea9b8"),
+                              hexStringToColor("cb6d51"),
+                            ],
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                    ),
+                  ),
                 ),
                 bottom: const TabBar(
                   indicatorColor: Colors.white,
