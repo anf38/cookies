@@ -185,7 +185,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
               trailing: Switch(
-                value: false,
+                value: isDarkModeEnabled.value,
                 onChanged: (value) {
                   setState(() {
                     toggleDarkMode(value);
