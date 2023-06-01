@@ -17,6 +17,7 @@ class _ShopPageState extends State<ShopPage> {
   int _tapCount = 1;
   int spawnRate = 1;
   int anotherCookieCost = 100;
+  int goldCookieCost = 100;
   var tileColor;
 
   int _payment(int price) {
@@ -248,7 +249,7 @@ class _ShopPageState extends State<ShopPage> {
                 ),
                 isThreeLine: true,
                 trailing: Text(
-                  '\$$anotherCookieCost',
+                  '\$$goldCookieCost',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 25,
@@ -256,10 +257,10 @@ class _ShopPageState extends State<ShopPage> {
                 ),
                 onTap: () {
                   setState(() {
-                    if ((yourScore * -1) >= anotherCookieCost) {
+                    if ((yourScore * -1) >= goldCookieCost) {
                       //if you can afford
                       _tapCount++;
-                      anotherCookieCost = _payment(anotherCookieCost);
+                      goldCookieCost = _payment(goldCookieCost);
                     }
                   });
                 },

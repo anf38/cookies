@@ -1,4 +1,3 @@
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cookies/screens/settings/changeEmail.dart';
 import 'package:cookies/screens/settings/changePassword.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,6 @@ void toggleDarkMode(bool value) {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  bool isSwitched = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
