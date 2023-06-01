@@ -8,6 +8,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'main.dart';
 
+ValueNotifier<bool> isDarkModeEnabled1 = ValueNotifier<bool>(false);
+
 class AppBarPage extends StatefulWidget {
   const AppBarPage({super.key});
 
@@ -17,12 +19,32 @@ class AppBarPage extends StatefulWidget {
 
 class _AppBarPageState extends State<AppBarPage> {
   @override
+  void initState() {
+    super.initState();
+    isDarkModeEnabled1.addListener(_updateTheme);
+  }
+
+  @override
+  void dispose() {
+    isDarkModeEnabled1.removeListener(_updateTheme);
+    super.dispose();
+  }
+
+  void _updateTheme() {
+    setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) => DefaultTabController(
         length: 4,
         child: Scaffold(
             appBar: AppBar(
                 title: const Text(
-                    "Cookie Clicker"), //maybe say "Username's Bakery"
+                    "Cookie Clicker",
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ), //maybe say "Username's Bakery"
                 centerTitle: true,
                 leading: IconButton(
                   icon: const Icon(Icons.menu),
@@ -33,6 +55,7 @@ class _AppBarPageState extends State<AppBarPage> {
                     message: "Logout",
                     child: IconButton(
                       icon: const Icon(Icons.logout),
+                      color: Colors.white,
                       onPressed: () {
                         FirebaseAuth.instance.signOut().then((value) {
                           // ignore: avoid_print

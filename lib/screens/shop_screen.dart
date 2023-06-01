@@ -15,6 +15,7 @@ class _ShopPageState extends State<ShopPage> {
   String yourUserName = "You";
   num yourScore = 0;
   int _tapCount = 1;
+  int spawnRate = 1;
   int anotherCookieCost = 100;
   var tileColor;
 
@@ -30,7 +31,7 @@ class _ShopPageState extends State<ShopPage> {
     ref
         .child('users/${FirebaseAuth.instance.currentUser!.uid}')
         .update({'clickPower': _tapCount});
-        anotherCookieCost = (100 * (_tapCount * _tapCount));
+    anotherCookieCost = (100 * (_tapCount * _tapCount));
     return price;
   }
 
@@ -179,8 +180,8 @@ class _ShopPageState extends State<ShopPage> {
                   "Another Cookie",
                   style: TextStyle(
                     color: yourScore + anotherCookieCost < 1
-                    ?  Colors.white
-                    :  const Color.fromARGB(150, 255, 255, 255),
+                        ? Colors.white
+                        : const Color.fromARGB(150, 255, 255, 255),
                     fontSize: 30,
                   ),
                 ),
@@ -189,8 +190,8 @@ class _ShopPageState extends State<ShopPage> {
                   maxLines: 2,
                   style: TextStyle(
                     color: yourScore + anotherCookieCost < 1
-                    ?  Colors.white
-                    :  const Color.fromARGB(150, 255, 255, 255),
+                        ? Colors.white
+                        : const Color.fromARGB(150, 255, 255, 255),
                     fontSize: 20,
                   ),
                 ),
@@ -204,7 +205,8 @@ class _ShopPageState extends State<ShopPage> {
                 ),
                 onTap: () {
                   setState(() {
-                    if ((yourScore * -1) >= anotherCookieCost) {//if you can afford
+                    if ((yourScore * -1) >= anotherCookieCost) {
+                      //if you can afford
                       _tapCount++;
                       anotherCookieCost = _payment(anotherCookieCost);
                     }
@@ -224,37 +226,53 @@ class _ShopPageState extends State<ShopPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: ListTile(
-                leading: const Icon(Icons.star),
-                title: const Text(
-                  "Second Item",
+                leading: const Icon(Icons.cookie),
+                title: Text(
+                  "Golden Cookie",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: yourScore + anotherCookieCost < 1
+                        ? Colors.white
+                        : const Color.fromARGB(150, 255, 255, 255),
                     fontSize: 30,
                   ),
                 ),
-                subtitle: const Text(
-                  "Subtitle 2",
+                subtitle: AutoSizeText(
+                  "Increase spawn rate of Gold cookies\nCurrent: $spawnRate%",
+                  maxLines: 2,
                   style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
+                    color: yourScore + anotherCookieCost < 1
+                        ? Colors.white
+                        : const Color.fromARGB(150, 255, 255, 255),
+                    fontSize: 20,
                   ),
                 ),
                 isThreeLine: true,
-                trailing: const Text(
-                  "\$200",
-                  style: TextStyle(
+                trailing: Text(
+                  '\$$anotherCookieCost',
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 25,
                   ),
                 ),
                 onTap: () {
-                  // Handle the onTap action
+                  setState(() {
+                    if ((yourScore * -1) >= anotherCookieCost) {
+                      //if you can afford
+                      _tapCount++;
+                      anotherCookieCost = _payment(anotherCookieCost);
+                    }
+                  });
                 },
-                tileColor: const Color.fromARGB(255, 189, 118, 118),
+                tileColor: yourScore + anotherCookieCost < 1
+                    ? const Color.fromARGB(255, 189, 118, 118)
+                    : const Color.fromARGB(255, 197, 144, 144),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
               ),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             const SizedBox(
               height: 20,

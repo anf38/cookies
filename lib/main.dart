@@ -23,23 +23,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  ThemeData lightTheme = ThemeData(
-    brightness: Brightness.light,
-    textTheme: const TextTheme(
-      bodyText1: TextStyle(
-        color: Color.fromARGB(255, 112, 63, 63),
-      ),
-    ),
-  );
-
-  ThemeData darkTheme = ThemeData(
-    brightness: Brightness.dark,
-    textTheme: const TextTheme(
-      bodyText1: TextStyle(
-        color: Color.fromARGB(255, 189, 118, 118),
-      ),
-    ),
-  );
 
   @override
   void initState() {
@@ -55,12 +38,27 @@ class _MyAppState extends State<MyApp> {
 
   void _updateTheme() {
     setState(() {
-      // no-op; rebuilding the widget will apply the updated theme
     });
   }
 
   @override
   Widget build(BuildContext context) {
+
+      ThemeData lightTheme = ThemeData(
+    brightness: Brightness.light,
+    textTheme: Theme.of(context).textTheme.apply(
+          bodyColor: const Color.fromARGB(255, 112, 63, 63),
+    ),
+  );
+
+  ThemeData darkTheme = ThemeData(
+    brightness: Brightness.dark,
+    textTheme: Theme.of(context).textTheme.apply(
+          bodyColor: const Color.fromARGB(255, 189, 118, 118),
+      ),
+  );
+
+
     return ValueListenableBuilder<bool>(
       valueListenable: isDarkModeEnabled,
       builder: (context, isDarkMode, child) {
@@ -75,3 +73,5 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
+
+//hive, local storage on the phone

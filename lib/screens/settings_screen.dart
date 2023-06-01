@@ -2,7 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cookies/screens/settings/changeEmail.dart';
 import 'package:cookies/screens/settings/changePassword.dart';
 import 'package:flutter/material.dart';
-
+import '../app_bar.dart';
 import '../main.dart';
 
 class SettingsPage extends StatefulWidget {
@@ -14,6 +14,7 @@ class SettingsPage extends StatefulWidget {
 
 void toggleDarkMode(bool value) {
   isDarkModeEnabled.value = value;
+  isDarkModeEnabled1.value = value;
 }
 
 class _SettingsPageState extends State<SettingsPage> {
