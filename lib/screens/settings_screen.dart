@@ -3,11 +3,17 @@ import 'package:cookies/screens/settings/changeEmail.dart';
 import 'package:cookies/screens/settings/changePassword.dart';
 import 'package:flutter/material.dart';
 
+import '../main.dart';
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
   @override
   State<SettingsPage> createState() => _SettingsPageState();
+}
+
+void toggleDarkMode(bool value) {
+  isDarkModeEnabled.value = value;
 }
 
 class _SettingsPageState extends State<SettingsPage> {
@@ -18,12 +24,11 @@ class _SettingsPageState extends State<SettingsPage> {
         body: SingleChildScrollView(
       child: Column(
         children: [
-
           const SizedBox(
             height: 20,
           ),
-
-          Padding( //ACCOUNT
+          Padding(
+            //ACCOUNT
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Container(
               decoration: BoxDecoration(
@@ -41,8 +46,8 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-
-          Padding(//account
+          Padding(
+            //account
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ListTile(
               leading: const Icon(Icons.person),
@@ -54,7 +59,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               trailing: const Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
+                color: Color.fromARGB(255, 189, 118, 118),
                 size: 25,
               ),
               onTap: () {
@@ -62,7 +67,8 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
           ),
-          Padding(//account
+          Padding(
+            //account
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ListTile(
               leading: const Icon(Icons.person),
@@ -74,7 +80,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               trailing: const Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
+                color: Color.fromARGB(255, 189, 118, 118),
                 size: 25,
               ),
               onTap: () {
@@ -85,7 +91,8 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
           ),
-          Padding(//account
+          Padding(
+            //account
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ListTile(
               leading: const Icon(Icons.person),
@@ -97,19 +104,20 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               trailing: const Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
+                color: Color.fromARGB(255, 189, 118, 118),
                 size: 25,
               ),
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const changePassword()),
+                  MaterialPageRoute(
+                      builder: (context) => const changePassword()),
                 );
               },
             ),
           ),
-
-          Padding(//Notifications
+          Padding(
+            //Notifications
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Container(
               decoration: BoxDecoration(
@@ -127,7 +135,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-
           Padding(
             //Notifications
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -141,7 +148,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               trailing: const Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
+                color: Color.fromARGB(255, 189, 118, 118),
                 size: 25,
               ),
               onTap: () {
@@ -149,7 +156,6 @@ class _SettingsPageState extends State<SettingsPage> {
               },
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Container(
@@ -168,7 +174,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ListTile(
@@ -176,28 +181,23 @@ class _SettingsPageState extends State<SettingsPage> {
               title: const Text(
                 "Dark Mode",
                 style: TextStyle(
-                  //color: Color.fromARGB(255, 112, 63, 63),
                   fontSize: 30,
                 ),
               ),
               trailing: Switch(
-      value: isSwitched,
-      onChanged: (value) {
-        setState(() {
-          isSwitched = value;
-          if (isSwitched) {
-            print("Hello World");
-          }
-        });
-      },
-      activeColor: const Color.fromARGB(255, 112, 63, 63),
-    ),
+                value: false,
+                onChanged: (value) {
+                  setState(() {
+                    toggleDarkMode(value);
+                  });
+                },
+                activeColor: const Color.fromARGB(255, 189, 118, 118),
+              ),
               onTap: () {
                 setState(() {});
               },
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Container(
@@ -216,7 +216,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-
           const Padding(
             //Privacy and Security
             padding: EdgeInsets.symmetric(horizontal: 16.0),
@@ -230,12 +229,11 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
+                color: Color.fromARGB(255, 189, 118, 118),
                 size: 25,
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Container(
@@ -254,7 +252,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: ListTile(
@@ -267,12 +264,11 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
+                color: Color.fromARGB(255, 189, 118, 118),
                 size: 25,
               ),
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Container(
@@ -291,7 +287,6 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
           ),
-
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: ListTile(
@@ -304,7 +299,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
               trailing: Icon(
                 Icons.arrow_forward_ios_outlined,
-                color: Color.fromARGB(255, 112, 63, 63),
+                color: Color.fromARGB(255, 189, 118, 118),
                 size: 25,
               ),
             ),

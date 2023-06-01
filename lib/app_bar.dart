@@ -7,8 +7,6 @@ import 'package:cookies/utils/color_utils.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-ThemeManager _themeManager = ThemeManager();
-
 class AppBarPage extends StatefulWidget {
   const AppBarPage({super.key});
 
